@@ -1,3 +1,26 @@
+/*
+https://github.com/leasalameh/cmps-270-assgt3
+username: leasalameh, repo: cmps-270-assgt3
+
+1,000 integers, 1 thread: Elapsed time: 0.000000 seconds
+1,000 integers, 2 threads: Elapsed time: 0.001000 seconds
+1,000 integers, 4 threads: Elapsed time: 0.001000 seconds
+1,000 integers, 32 threads: Elapsed time: 0.001000 seconds
+
+1,000,000 integers, 1 thread: Elapsed time: 0.004000 seconds
+1,000,000 integers, 2 threads: Elapsed time: 0.005000 seconds
+1,000,000 integers, 4 threads: Elapsed time: 0.004000 seconds
+1,000,000 integers, 32 threads: Elapsed time: 0.004000 seconds
+
+1,000,000,000 integers, 1 thread: Elapsed time: 2.360000 seconds
+1,000,000,000 integers, 2 threads: Elapsed time: 3.714000 seconds
+1,000,000,000 integers, 4 threads: Elapsed time: 4.229000 seconds
+1,000,000,000 integers, 32 threads: Elapsed time: 4.490000 seconds
+
+out of 100 runs, the program returned the right answer 63 times.
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -8,15 +31,18 @@ int length;
 int count;
 int num_threads;
 
-void *count1s(void *arg) {
+void *count1s(void *arg)
+{
     int thread_id = *((int *)arg);
     int i;
     int chunk_size = length / num_threads;
     int start = thread_id * chunk_size;
     int end = (thread_id == num_threads - 1) ? length : start + chunk_size;
 
-    for (i = start; i < end; i++) {
-        if (array[i] == 1) {
+    for (i = start; i < end; i++)
+    {
+        if (array[i] == 1)
+        {
             count++;
         }
     }
@@ -24,8 +50,10 @@ void *count1s(void *arg) {
     pthread_exit(NULL);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 3) {
+int main(int argc, char *argv[])
+{
+    if (argc != 3)
+    {
         printf("Usage: %s <array_length> <num_threads>\n", argv[0]);
         return -1;
     }
@@ -37,12 +65,13 @@ int main(int argc, char *argv[]) {
 
     // Initialize array with random values between 0 and 5 (inclusive)
     srand(time(NULL));
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
+    {
         array[i] = rand() % 6;
     }
 
-    // Print the array
-    printf("Array: ");
+    //Print the array
+        printf("Array: ");
     for (int i = 0; i < length; i++)
     {
         printf("%d ", array[i]);
@@ -55,13 +84,15 @@ int main(int argc, char *argv[]) {
     int thread_ids[num_threads];
 
     // Create threads
-    for (int i = 0; i < num_threads; i++) {
+    for (int i = 0; i < num_threads; i++)
+    {
         thread_ids[i] = i;
         pthread_create(&threads[i], NULL, count1s, (void *)&thread_ids[i]);
     }
 
     // Join threads
-    for (int i = 0; i < num_threads; i++) {
+    for (int i = 0; i < num_threads; i++)
+    {
         pthread_join(threads[i], NULL);
     }
 
