@@ -1,3 +1,24 @@
+/*
+https://github.com/leasalameh/cmps-270-assgt3
+username: leasalameh, repo: cmps-270-assgt3
+
+1,000 integers, 1 thread: Elapsed time: 0.000000 seconds
+1,000 integers, 2 threads: Elapsed time: 0.001000 seconds
+1,000 integers, 4 threads: Elapsed time: 0.001000 seconds
+1,000 integers, 32 threads: Elapsed time: 0.001000 seconds
+
+1,000,000 integers, 1 thread: Elapsed time: 0.004000 seconds
+1,000,000 integers, 2 threads: Elapsed time: 0.002000 seconds
+1,000,000 integers, 4 threads: Elapsed time: 0.002000 seconds
+1,000,000 integers, 32 threads: Elapsed time: 0.002000 seconds
+
+1,000,000,000 integers, 1 thread: Elapsed time: 2.486000 seconds
+1,000,000,000 integers, 2 threads: Elapsed time: 1.309000 seconds
+1,000,000,000 integers, 4 threads: Elapsed time: 0.816000 seconds
+1,000,000,000 integers, 32 threads: Elapsed time: 0.714000 seconds
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
